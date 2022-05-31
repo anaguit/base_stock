@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ("./partials/head") %>
+<body>
+    <%- include ("./partials/header") %>
+    <main>
+        <h3>Detalle Equipo</h3>
+        <h3>Marca: <%=equipo.marcas.nombre%></h3>
+        <h3>Modelo: <%=equipo.modelos.nombre%></h3>
+        <h3>Numero de serie: <%=equipo.numero_serie%></h3>
+        <h3>Imel: <%=equipo.imel%></h3>
+        <h3>Numero de antena: <%=equipo.nr_antena%></h3>
+        <h3>Forma de ingreso: <%=equipo.ingresos.origen%></h3>
+        <h3>Ubicacion: <%=equipo.ubicaciones.nombre_ubicacion%></h3>
+        <h3>Prioridad de asignación: <%=equipo.prioridad_asignacion%></h3>
+        <h3>Logo: <%=equipo.logo%></h3>
+        <h3>Fecha ingreso: <%=equipo.fecha_ingreso %></h3>
+        <h3>Fecha última ubicación: 
+            <% if(equipo.fecha_cambio_ubicacion !== null){ %>
+                 <%= equipo.fecha_cambio_ubicacion %> 
+                 <% } else { %>
+                    No hubo cambio de ubicacion   
+                </h3>
+                <% } %><br>
+
+        <a href="/equipo/editar/<%=equipo.numero_serie%>"><button>Editar</button></a>
+    </main>
+    <%- include ("./partials/footer") %>
+</body>
+</html>

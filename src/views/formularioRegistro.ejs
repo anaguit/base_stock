@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head") %>
+    <body>
+        <%- include("./partials/header") %>
+        <main>
+            <h4>Datos equipo</h4>
+            
+            <form action="/equipo/registrar" method="POST">
+                <p>Marca</p>
+                <select name="marca">
+                    <option value="">Elegi una Marca</option>
+                    <% for(let marca of marcas){ %>
+                        <option value="<%= marca.id %>"<%= locals.datos && (marca.id === datos.marca) ? 'selected':null %>><%= marca.nombre %></option><% } %>    
+                </select>
+                <% if(locals.errores && errores.marca){%>
+                    <p style="color:red"><%= errores.marca.msg%></p>
+                <% } %>
+                <p>Modelo</p>
+                <select name="modelo">
+                    <option value="">Elegi un Modelo</option>
+                    <% for(let modelo of modelos){ %>
+                        <option value="<%= modelo.id %>"<%= locals.datos && (modelo.id === datos.modelo) ? 'selected':null %>><%= modelo.nombre %></option><% } %>
+                </select>
+                <% if(locals.errores && errores.modelo){%>
+                    <p style="color:red"><%= errores.modelo.msg%></p>
+                <% } %>
+                <p>Numero de serie</p>
+                <input type="text" name="nrSerie" value="<%= locals.datos && datos.nrSerie ? datos.nrSerie:'' %>">
+                <% if(locals.errores && errores.nrSerie){%>
+                    <p style="color:red"><%= errores.nrSerie.msg%></p>
+                <% } %>
+                <p>Imel</p>
+                <input type="text" name="imel" value="<%= locals.datos && datos.imel ? datos.imel:'' %>">
+                <% if(locals.errores && errores.imel){%>
+                    <p style="color:red"><%= errores.imel.msg%></p>
+                <% } %>
+                <p>Numero de antena</p>
+                <input type="number" name="nrAntena" value="<%= locals.datos && datos.nrAntena ? datos.nrAntena:'' %>">
+                <% if(locals.errores && errores.nrAntena){%>
+                    <p style="color:red"><%= errores.nrAntena.msg%></p>
+                <% } %>
+                <p>Forma de ingreso</p>
+                <select name="formaIngreso">
+                    <option value="">Elegi una forma de ingreso</option>
+                    <% for(let ingreso of formasIngreso){ %>
+                        <option value="<%= ingreso.id %>"<%= locals.datos && (ingreso.origen === datos.formaIngreso) ? 'selected':null %>><%= ingreso.origen %></option><% } %>
+                </select>
+                <% if(locals.errores && errores.formaIngreso){%>
+                    <p style="color:red"><%= errores.formaIngreso.msg%></p>
+                <% } %>
+                <p>Ubicacion</p>
+                <select name="ubicacion">
+                    <option value="">Elegi una forma ubicacion</option>
+                    <% for(let ubicacion of ubicaciones){ %>
+                        <option value="<%= ubicacion.id %>"<%= locals.datos && (ubicacion.nombre_ubicacion === datos.ubicacion) ? 'selected':null %>><%= ubicacion.nombre_ubicacion %></option><% } %>
+                </select>
+                <% if(locals.errores && errores.ubicacion){%>
+                    <p style="color:red"><%= errores.ubicacion.msg%></p>
+                <% } %>
+                <p>Prioridad de asignación</p>
+                <input type="radio" name="prioridad" value="comodato" <%= locals.datos && datos.prioridad === 'comodato' ? 'checked':'' %>>Comodato
+                <input type="radio" name="prioridad" value="venta" <%= locals.datos && datos.prioridad === 'venta' ? 'checked':'' %>>Venta
+                <% if(locals.errores && errores.prioridad){%>
+                    <p style="color:red"><%= errores.prioridad.msg%></p>
+                <% } %>
+                <p>Logo</p>
+                <input type="radio" name="logo" value="si" <%= locals.datos && datos.logo === 'si' ? 'checked':'' %>>Si
+                <input type="radio" name="logo" value="no" <%= locals.datos && datos.logo === 'no' ? 'checked':'' %>>No
+                <% if(locals.errores && errores.logo){%>
+                    <p style="color:red"><%= errores.logo.msg%></p>
+                <% } %>
+                <button type="submit">Enviar</button>
+                <button type="reset">Cancelar</button>
+            </form>
+        </main>
+        <%- include("./partials/footer") %>
+    </body>
+</html>

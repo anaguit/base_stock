@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ("./partials/head") %>
+<body>
+    <%- include ("./partials/header") %>
+    <main>
+        <h4>Listado de equipos</h4>
+        <ul>
+            <% for (let equipo of equipos){ %>
+            <a href="/equipo/detalle/<%=equipo.numero_serie%>" style="text-decoration:none"><li><%= equipo.marcas.nombre %> <%= equipo.modelos.nombre %> --- nr serie: <%= equipo.numero_serie %></li></a>
+            <form action="/equipo/eliminar?_method=DELETE" method="POST">
+                <input type="hidden" name="numero_serie" value="<%=equipo.numero_serie%>">
+                <button type="submit">Eliminar</i></button>
+            </form>
+            <% } %>
+        </ul>
+    </main>
+    <%- include ("./partials/footer") %>
+</body>
+</html>

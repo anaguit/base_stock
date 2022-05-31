@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head") %>
+<body>
+    <%- include("./partials/header") %>
+    <main>
+        <a href="/equipo/registrar"><button>Cargar equipo</button></a>
+        <h3>Buscar equipo:</h3>
+        <form action="/equipo/resultados" method="POST">
+            <input name="numeroSerie" placeholder="Nr serie">
+            <button type="submit">Buscar</button>
+        </form>
+        <a href="/equipo/listado"><button>Ver equipos</button></a>
+        <div>
+            <h2 style="color:red">Sector consultas</h2>
+            <h4>Busqueda por ubicacion</h4>
+            <form action="/equipo/consulta/ubicacion" method="GET">
+                <select name="ubicacion">
+                    <option value="">Seleccione una opcion</option>
+                <% for(let ubicacion of ubicaciones){ %>    
+                    <option value="<%= ubicacion.id %>"><%= ubicacion.nombre_ubicacion %></option>
+                <% }%>
+            </select>
+                <button type="submit">Consultar</button>
+            </form>
+            <h4>Busqueda por forma ingreso</h4>
+            <form action="/equipo/consulta/ingreso" method="GET">
+                    <select name="forma_ingreso">
+                            <option value="">Seleccione una opcion</option>
+                        <% for(let formaIngreso of formasIngreso){ %>    
+                            <option value="<%= formaIngreso.id %>"><%= formaIngreso.origen %></option>
+                        <% }%>
+                    </select>
+                <button type="submit">Consultar</button>
+            </form>
+            <h4>Busqueda por marca</h4>
+            <form action="/equipo/consulta/marca" method="GET">
+                <select name="marca">
+                    <option value="">Seleccione una opcion</option>
+                <% for(let marca of marcas){ %>    
+                    <option value="<%= marca.id %>"><%= marca.nombre %></option>
+                <% }%>
+            </select>
+                <button type="submit">Consultar</button>
+            </form>
+            <h4>Busqueda por modelo</h4>
+            <form action="/equipo/consulta/modelo" method="GET">
+                <select name="modelo">
+                    <option value="">Seleccione una opcion</option>
+                <% for(let modelo of modelos){ %>    
+                    <option value="<%= modelo.id %>"><%= modelo.nombre %></option>
+                <% }%>
+            </select>
+                <button type="submit">Consultar</button>
+            </form>
+        </div>
+    </main>
+    <%- include("./partials/footer") %>
+</body>
+</html>

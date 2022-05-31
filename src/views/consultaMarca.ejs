@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head") %>
+<body>
+    <%- include("./partials/header") %>
+    <main>
+        <h1>EQUIPOS DE LA MARCA</h1>
+            <% for(let equipo of equipos){ %>
+                    <h4>Total de equipos marca <%= equipo.marcas.nombre %> <%= equipo.modelos.nombre %>:
+                     <%= equipo.dataValues.cuenta_marca %></h4>
+            <% } %>
+    </main>
+    <%- include("./partials/footer") %>
+</body>
+</html>
